@@ -7,6 +7,7 @@
 package roleta;
 
 import java.util.Scanner;
+import java.util.Random;
 
 /**
  *
@@ -21,16 +22,26 @@ public class Roleta {
         
     // variables
     
-    int fichas, rodadas;
-    int nJogadores = 2;
-  
+    int rodadas, nJogadores; //variável nJogadores criada para fim de personalizaçao do jogo. Poderá ser mudado q quantidade de jogadores.
+    nJogadores = 2;
+    
+    int[] fichas = new int[nJogadores];
+    int[] apostaFicha = new int[nJogadores];
+    int[] numeroAposta = new int[nJogadores];
+    
+    fichas[0] = 100;
+    fichas[1] = 100;
+    
+    
+   
     
         Scanner input1 = new Scanner(System.in);
         Scanner input2 = new Scanner(System.in);
   
     
+    
     //Iniciando Jogo
-
+    
  
         System.out.println("Bem Vindo ao Jogo ROLETA!");
         System.out.println("");
@@ -67,7 +78,77 @@ public class Roleta {
         } 
         
         
+     
+     //Fichas por Aposta
         
+        for (int i = 0; i < nJogadores; i++) {
+            
+            System.out.println(jogadores[i] + ", por favor informe quantas fichas deseja apostar ( MIN:1, MAX: 20)");
+            apostaFicha[i] = input1.nextInt();
+                
+            while (apostaFicha[i] < 1 || apostaFicha[i] > 20 || apostaFicha[i] > fichas[i]) {
+                
+                System.out.println("Você possui " + fichas[i] + " fichas.");
+                System.out.println("Por favor informe uma valor de 1 a 20."); 
+                
+                System.out.println(jogadores[i] + ", por favor informe quantas fichas deseja apostar ( MIN:1, MAX: 20)");
+                apostaFicha[i] = input1.nextInt();
+                    
+                }
+                
+                    
+                fichas[i] -= apostaFicha[i];
+                
+                    
+                System.out.println("Você apostou " + apostaFicha[i] + " fichas. Restam: " + fichas[i] + " fichas.");
+
+                }
+            
+        // Aposta no Número.
+        
+            for (int i = 0; i < nJogadores; i++) {
+            
+            System.out.println(jogadores[i] + ", por favor informe qual número deseja apostar ( MIN:1, MAX: 12)");
+            numeroAposta[i] = input1.nextInt();
+                
+            while (numeroAposta[i] < 1 || numeroAposta[i] > 12) {
+               
+                System.out.println("Por favor escolha um número entre 1 e 12."); 
+               
+                numeroAposta[i] = input1.nextInt();
+                    
+                }
+            
+           
+        }
+            
+            for (int i = 0; i < nJogadores; i++) {
+                
+            System.out.println(jogadores[i] + " apostou no número: " + numeroAposta[i] + ".");
+           
+   
+        
+    }
+}
+    
+        int roleta = random();
+        public static int random() {
+        Random gerador = new Random();
+        
+       return gerador.nextInt(12);
+       
+    
+       
+}
+}  
+                    
+             
+                
+                    
+                
+             
+     
+    
     
     
     
