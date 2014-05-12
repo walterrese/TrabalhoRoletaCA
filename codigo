@@ -45,7 +45,8 @@ public class Roleta {
  
         System.out.println("Bem Vindo ao Jogo ROLETA!");
         System.out.println("");
-        
+        System.out.println("Por favor informe a quantidade de jogadores.");
+        nJogadores = input1.nextInt();
             
          
         
